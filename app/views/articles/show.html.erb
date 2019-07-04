@@ -1,18 +1,23 @@
-p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
- 
-<h2>Comments</h2>
-<%= render @article.comments %>
- 
-<h2>Add a comment:</h2>
+<h2 align="center">Title:<%= @article.title %></h2>
+  <div class="well col-xs-8 col-xs-offset-2">
+  <h4 class="center"><strong> Description</strong></h4>
+<hr>
+  <%= simple_format(@article.text) %>
+  <h4 class="center"><strong> Comments</strong></h4>
+  <hr>
+  <%= render @article.comments %>
+  <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+
+
  
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+
+ 
+<div class="article-actions">
+<%= link_to 'Edit This Article', edit_article_path(@article),class: "btn btn-xs btn-primary" %>
+<%= link_to 'View All Articles', articles_path, class: "btn btn-xs btn-success" %>
+<%= link_to 'Delete This Article', article_path(@article),method: :delete,
+        data: { confirm: 'please don\'t to this!!!'},class: "btn btn-xs btn-danger" %>
+</div>
+</div>
